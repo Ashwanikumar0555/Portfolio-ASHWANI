@@ -12,8 +12,8 @@ export default function ReferencesSection({ themeColor }) {
       position: "Co-Founder",
       company: "CodingGita",
       content:
-        "Patel Neel Maheshbhai is a visionary leader and Co-Founder at CodingGita. His passion for technology and commitment to innovation drive the platform's growth and success.",
-      avatar: "/placeholder.svg?height=100&width=100&text=NM",
+        "Patel Neel Maheshbhai is a trailblazing entrepreneur and Co-Founder of CodingGita, whose unwavering dedication to technological advancement and creative problem-solving propel the platform to new heights.",
+      avatar: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/NeelSir.png?raw=true",
     },
   ]
 
