@@ -214,11 +214,13 @@ import { Github, ExternalLink, Heart, Coffee, Code, Server, Figma, Monitor, Data
 import * as Tabs from "@radix-ui/react-tabs"
 import { cn } from "../utils/cn"
 import { themeColors } from "../ui/color-selector"
-import portfolio from "../assets/portfolio.png"
-import coffee from "../assets/coffee.png"
-import youtube from "../assets/youtube clone.png"
-import reactroutertask from "../assets/react router task.png"
-import yourlogo from "../assets/yourlogo.png"
+
+// Updated image imports with GitHub URLs
+const portfolio = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/portfolio.png?raw=true"
+const coffee = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/coffee.png?raw=true"
+const youtube = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/youtube%20clone.png?raw=true"
+const reactroutertask = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/react%20router%20task.png?raw=true"
+const yourlogo = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/yourlogo.png?raw=true"
 
 export default function ProjectsSection({ themeColor = "blue" }) {
   const [favorites, setFavorites] = useState([])
@@ -262,15 +264,14 @@ export default function ProjectsSection({ themeColor = "blue" }) {
   ]
 
   const allProjects = [
-
     {
       id: "portfolio",
-      title: "Portfolio Website",
+      title: "Portfolio Website", 
       description: "My personal portfolio showcasing projects and skills.",
       tags: ["React", "TailwindCSS", "Portfolio"],
       category: "react",
       image: portfolio,
-      githubUrl: "https://github.com/yourusername/portfolio",
+      githubUrl: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI",
       liveUrl: "#",
       featured: true
     },
@@ -279,7 +280,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       title: "Modern Coffee Shop",
       description: "An elegant and responsive coffee shop website featuring online ordering, a customer loyalty program, and a seamless user experience.",
       tags: ["React", "TailwindCSS", "Responsive"],
-      category: "react",
+      category: "react", 
       image: coffee,
       githubUrl: "https://github.com/Ashwanikumar0555/Coffee-",
       liveUrl: "https://coffee-ak.onrender.com/",
@@ -292,7 +293,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["React", "YouTube API", "Responsive"],
       category: "react",
       image: youtube,
-      githubUrl: "https://github.com/yourusername/youtube-clone",
+      githubUrl: "https://github.com/Ashwanikumar0555/youtube-clone-main",
       liveUrl: "https://youtubeclonemainn.netlify.app/",
       featured: true
     },
@@ -303,7 +304,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["React", "Router", "API"],
       category: "react",
       image: reactroutertask,
-      githubUrl: "https://github.com/yourusername/react-router-task",
+      githubUrl: "https://github.com/Ashwanikumar0555/react-route-task-",
       liveUrl: "https://reactroutertaskapi.netlify.app/",
       featured: false
     },
@@ -314,21 +315,10 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["Design", "Branding", "Logo"],
       category: "figma",
       image: yourlogo,
-      githubUrl: "#",
+      githubUrl: "https://github.com/Ashwanikumar0555/Your-logo-",
       liveUrl: "https://yourlog.netlify.app/about",
       featured: false
-    },
-    // {
-    //   id: "portfolio",
-    //   title: "Portfolio Website",
-    //   description: "My personal portfolio showcasing projects and skills.",
-    //   tags: ["React", "TailwindCSS", "Portfolio"],
-    //   category: "react",
-    //   image: portfolio,
-    //   githubUrl: "https://github.com/yourusername/portfolio",
-    //   liveUrl: "#",
-    //   featured: true
-    // }
+    }
   ]
 
   // Rest of the code remains the same...
