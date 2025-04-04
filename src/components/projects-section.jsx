@@ -272,7 +272,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       category: "react",
       image: portfolio,
       githubUrl: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI",
-      liveUrl: "#",
+      liveUrl: "https://chic-cactus-199732.netlify.app/",
       featured: true
     },
     {
