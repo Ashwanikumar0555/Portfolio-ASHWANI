@@ -221,7 +221,6 @@
 
 
 
-
 "use client"
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
@@ -244,16 +243,16 @@ const enhancedThemeColors = {
     bgHover: "hover:bg-blue-200 dark:hover:bg-blue-800/50",
     iconBg: "bg-blue-500/90"
   },
-  green: {
-    primary: "from-green-500 to-emerald-500",
-    bg: "bg-green-500",
-    bgLight: "bg-green-100 dark:bg-green-900/30",
-    text: "text-green-700 dark:text-green-300",
-    border: "border-green-400",
-    shadowColor: "green-500",
-    shadowGlow: "shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]",
-    bgHover: "hover:bg-green-200 dark:hover:bg-green-800/50",
-    iconBg: "bg-green-500/90"
+  red: {
+    primary: "from-red-500 to-orange-500",
+    bg: "bg-red-500",
+    bgLight: "bg-red-100 dark:bg-red-900/30", 
+    text: "text-red-700 dark:text-red-300",
+    border: "border-red-400",
+    shadowColor: "red-500",
+    shadowGlow: "shadow-[0_0_20px_-5px_rgba(239,68,68,0.3)]",
+    bgHover: "hover:bg-red-200 dark:hover:bg-red-800/50",
+    iconBg: "bg-red-500/90"
   },
   purple: {
     primary: "from-purple-500 to-violet-500",
@@ -287,6 +286,17 @@ const enhancedThemeColors = {
     shadowGlow: "shadow-[0_0_20px_-5px_rgba(236,72,153,0.3)]",
     bgHover: "hover:bg-pink-200 dark:hover:bg-pink-800/50",
     iconBg: "bg-pink-500/90"
+  },
+  green: {
+    primary: "from-green-500 to-emerald-500",
+    bg: "bg-green-500",
+    bgLight: "bg-green-100 dark:bg-green-900/30",
+    text: "text-green-700 dark:text-green-300",
+    border: "border-green-400",
+    shadowColor: "green-500",
+    shadowGlow: "shadow-[0_0_20px_-5px_rgba(34,197,94,0.3)]",
+    bgHover: "hover:bg-green-200 dark:hover:bg-green-800/50",
+    iconBg: "bg-green-500/90"
   }
 }
 
