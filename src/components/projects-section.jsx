@@ -204,7 +204,6 @@
 //     </section>
 //   )
 // }
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -220,10 +219,10 @@ const coffee = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/
 const youtube = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/youtube%20clone.png?raw=true"
 const reactroutertask = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/react%20router%20task.png?raw=true"
 const yourlogo = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/yourlogo.png?raw=true"
-const mernapp = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/mernapp.png?raw=true"
-const foodeat = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/foodeat.png?raw=true"
-const reduxapi = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/reduxapi.png?raw=true"
-const bgchanger = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/bgchanger.png?raw=true"
+const mernapp = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Luxora.png?raw=true"
+const foodeat = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Food%20Eat.png?raw=true"
+const reduxapi = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Redux-Api.png?raw=true"
+const bgchanger = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/BG-Changer.png?raw=true"
 
 export default function ProjectsSection({ themeColor = "blue" }) {
   const [favorites, setFavorites] = useState([])
@@ -279,6 +278,17 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       featured: true
     },
     {
+      id: "mern-app",
+      title: "MERN Stack App",
+      description: "A full stack MERN application with authentication and CRUD operations.",
+      tags: ["MongoDB", "Express", "React", "Node"],
+      category: ["mern", "backend"],
+      image: mernapp,
+      githubUrl: "https://github.com/Ashwanikumar0555/luxora",
+      liveUrl: "https://vocal-pithivier-6af21a.netlify.app/",
+      featured: true
+    },
+    {
       id: "coffee-project",
       title: "Modern Coffee Shop",
       description: "An elegant and responsive coffee shop website featuring online ordering, a customer loyalty program, and a seamless user experience.",
@@ -315,23 +325,12 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       id: "your-logo",
       title: "Your Logo",
       description: "A modern logo design and branding project.",
-      tags: ["Design", "Branding", "Logo"],
-      category: "figma",
+      tags: ["Design", "Branding", "Logo", "React"],
+      category: ["figma", "react"],
       image: yourlogo,
       githubUrl: "https://github.com/Ashwanikumar0555/Your-logo-",
       liveUrl: "https://yourlog.netlify.app/about",
       featured: false
-    },
-    {
-      id: "mern-app",
-      title: "MERN Stack App",
-      description: "A full stack MERN application with authentication and CRUD operations.",
-      tags: ["MongoDB", "Express", "React", "Node"],
-      category: "mern",
-      image: mernapp,
-      githubUrl: "https://github.com/yourusername/mern-app",
-      liveUrl: "https://vocal-pithivier-6af21a.netlify.app/",
-      featured: true
     },
     {
       id: "food-eat",
@@ -340,7 +339,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["HTML", "CSS", "Responsive"],
       category: "html-css",
       image: foodeat,
-      githubUrl: "https://github.com/yourusername/food-eat",
+      githubUrl: "https://github.com/Ashwanikumar0555/foodeat",
       liveUrl: "https://foodeatak.netlify.app/",
       featured: false
     },
@@ -351,7 +350,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["React", "Redux", "API"],
       category: "react",
       image: reduxapi,
-      githubUrl: "https://github.com/yourusername/redux-api",
+      githubUrl: "https://github.com/Ashwanikumar0555/Redux-api",
       liveUrl: "https://reduxak.netlify.app/",
       featured: false
     },
@@ -362,18 +361,18 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       tags: ["React", "TailwindCSS"],
       category: "react",
       image: bgchanger,
-      githubUrl: "https://github.com/yourusername/bg-changer",
+      githubUrl: "https://github.com/Ashwanikumar0555/bg-changer",
       liveUrl: "https://bg-changerak.netlify.app/",
       featured: false
     }
   ]
 
-  // Rest of the code remains the same...
-  // (Keep all the filtering, sorting, and UI rendering logic as is)
-
   const filteredProjects = allProjects
     .filter(project => {
-      if (activeCategory !== "all" && project.category !== activeCategory) {
+      if (activeCategory !== "all" && 
+          (Array.isArray(project.category) 
+            ? !project.category.includes(activeCategory)
+            : project.category !== activeCategory)) {
         return false
       }
       
