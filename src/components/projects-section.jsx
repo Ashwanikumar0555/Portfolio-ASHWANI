@@ -205,7 +205,6 @@
 //   )
 // }
 
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -221,6 +220,10 @@ const coffee = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/
 const youtube = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/youtube%20clone.png?raw=true"
 const reactroutertask = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/react%20router%20task.png?raw=true"
 const yourlogo = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/yourlogo.png?raw=true"
+const mernapp = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/mernapp.png?raw=true"
+const foodeat = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/foodeat.png?raw=true"
+const reduxapi = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/reduxapi.png?raw=true"
+const bgchanger = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/bgchanger.png?raw=true"
 
 export default function ProjectsSection({ themeColor = "blue" }) {
   const [favorites, setFavorites] = useState([])
@@ -317,6 +320,50 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       image: yourlogo,
       githubUrl: "https://github.com/Ashwanikumar0555/Your-logo-",
       liveUrl: "https://yourlog.netlify.app/about",
+      featured: false
+    },
+    {
+      id: "mern-app",
+      title: "MERN Stack App",
+      description: "A full stack MERN application with authentication and CRUD operations.",
+      tags: ["MongoDB", "Express", "React", "Node"],
+      category: "mern",
+      image: mernapp,
+      githubUrl: "https://github.com/yourusername/mern-app",
+      liveUrl: "https://vocal-pithivier-6af21a.netlify.app/",
+      featured: true
+    },
+    {
+      id: "food-eat",
+      title: "Food Eat",
+      description: "A responsive food ordering website built with HTML and CSS.",
+      tags: ["HTML", "CSS", "Responsive"],
+      category: "html-css",
+      image: foodeat,
+      githubUrl: "https://github.com/yourusername/food-eat",
+      liveUrl: "https://foodeatak.netlify.app/",
+      featured: false
+    },
+    {
+      id: "redux-api",
+      title: "Redux API Integration",
+      description: "React application showcasing Redux integration with API calls.",
+      tags: ["React", "Redux", "API"],
+      category: "react",
+      image: reduxapi,
+      githubUrl: "https://github.com/yourusername/redux-api",
+      liveUrl: "https://reduxak.netlify.app/",
+      featured: false
+    },
+    {
+      id: "bg-changer",
+      title: "Background Changer",
+      description: "React and Tailwind CSS app for dynamic background color changes.",
+      tags: ["React", "TailwindCSS"],
+      category: "react",
+      image: bgchanger,
+      githubUrl: "https://github.com/yourusername/bg-changer",
+      liveUrl: "https://bg-changerak.netlify.app/",
       featured: false
     }
   ]
