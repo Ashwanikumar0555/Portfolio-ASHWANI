@@ -218,7 +218,7 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                   )}
                 </button> */}
 
-                <button
+                {/* <button
                   onClick={downloadCertificate}
                   disabled={isDownloading}
                   className={cn(
@@ -247,7 +247,7 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                       Download PDF
                     </>
                   )}
-                </button>
+                </button> */}
               </div>
             </div>
           </motion.div>
