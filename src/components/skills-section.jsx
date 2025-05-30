@@ -158,20 +158,7 @@ const fetchSkillsData = async () => {
       lastUsed: "2024",
       proficiency: "Expert"
     },
-    // { 
-    //   name: "GraphQL", 
-    //   level: 75, 
-    //   category: "backend", 
-    //   icon: <Database size={18} />, 
-    //   difficulty: "advanced", 
-    //   featured: false, 
-    //   // experience: "2+ years", 
-    //   // projects: 15,
-    //   description: "Schema design, resolvers, and Apollo Client integration",
-    //   certifications: ["GraphQL Fundamentals"],
-    //   lastUsed: "2024",
-    //   proficiency: "Intermediate"
-    // }
+    
   ];
 };
 
@@ -872,30 +859,7 @@ const EnhancedSkillsSection = ({ themeColor = 'blue' }) => {
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Scroll Indicator */}
-        {/* <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          onClick={() => skillsGridRef.current?.scrollIntoView({ behavior: 'smooth' })}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer group"
-          whileHover={{ y: 5 }}
-        >
-          <span className="text-sm font-medium mb-2 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            Explore Skills
-          </span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className={cn(
-              "p-3 rounded-full shadow-lg border transition-all duration-300 group-hover:shadow-xl group-hover:scale-110",
-              themeClasses.bgLight,
-              themeClasses.border
-            )}
-          >
-            <ArrowDown className={cn("w-5 h-5", themeClasses.accentColor)} />
-          </motion.div>
-        </motion.button> */}
+        
       </div>
 
       <div ref={skillsGridRef} className="container mx-auto px-4 max-w-7xl">
