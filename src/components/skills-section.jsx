@@ -401,34 +401,22 @@ const EnhancedSkillCard = ({ skill, isHighlighted, index, themeClasses }) => {
     triggerOnce: true,
     rootMargin: '50px'
   });
-
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ 
-        opacity: isHighlighted ? 1 : 0.6, 
-        y: 0, 
-        scale: 1,
-        transition: { delay: index * 0.05 }
-      }}
-      exit={{ opacity: 0, y: -20, scale: 0.95 }}
-      whileHover={{ 
-        scale: isHighlighted ? 1.02 : 1,
-        y: isHighlighted ? -2 : 0,
-        transition: { duration: 0.2 }
-      }}
+      initial={{ opacity: 0, y: 40, scale: 0.96 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.07, type: 'spring', stiffness: 80 }}
+      whileHover={{ scale: 1.03, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.12)' }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      layout
       className={cn(
-        "group relative p-6 rounded-2xl border transition-all duration-300 overflow-hidden",
+        'group relative p-6 rounded-2xl border transition-all duration-300 overflow-hidden',
         isHighlighted 
-          ? "border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl" 
-          : "border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50"
+          ? 'border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl' 
+          : 'border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50'
       )}
     >
       {/* Enhanced Background Pattern */}
@@ -512,7 +500,21 @@ const EnhancedSkillCard = ({ skill, isHighlighted, index, themeClasses }) => {
         </div>
 
         {/* Progress Bar */}
-        <AnimatedProgressBar level={skill.level} inView={inView} themeClasses={themeClasses} />
+        <div className="mt-4">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Proficiency</span>
+            <span className={cn("text-xs font-bold", themeClasses.accentColor)}>{skill.level}%</span>
+          </div>
+          <div className="relative h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden shadow-inner mt-1">
+            <motion.div
+              className={cn('h-full rounded-full', themeClasses.progressBar)}
+              initial={{ width: 0 }}
+              animate={{ width: inView ? `${skill.level}%` : 0 }}
+              transition={{ duration: 1.2, delay: index * 0.07, type: 'spring', stiffness: 60 }}
+              style={{ background: `linear-gradient(to right, var(--tw-gradient-stops))` }}
+            />
+          </div>
+        </div>
 
         {/* Additional Info */}
         <div className="mt-4 flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
@@ -543,72 +545,6 @@ const EnhancedSkillCard = ({ skill, isHighlighted, index, themeClasses }) => {
             </motion.div>
           )}
         </div>
-
-        {/* Expandable Details */}
-        <motion.div
-          initial={false}
-          animate={{ height: isExpanded ? "auto" : 0 }}
-          transition={{ duration: 0.3 }}
-          className="overflow-hidden"
-        >
-          <div className="pt-4 mt-4 border-t border-slate-200 dark:border-slate-700">
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
-              {skill.description}
-            </p>
-            {skill.certifications && (
-              <div className="flex flex-wrap gap-2 mb-3">
-                {skill.certifications.map((cert, index) => (
-                  <motion.span
-                    key={index}
-                    className={cn(
-                      "text-xs px-2 py-1 rounded-full",
-                      themeClasses.bgLight,
-                      themeClasses.accentColor
-                    )}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {cert}
-                  </motion.span>
-                ))}
-              </div>
-            )}
-            <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-1">
-                <Users size={14} />
-                {skill.proficiency} Level
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock size={14} />
-                Last used: {skill.lastUsed}
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Expand/Collapse Button */}
-        <motion.button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className={cn(
-            "mt-4 w-full flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium transition-all",
-            "hover:bg-slate-100 dark:hover:bg-slate-700",
-            themeClasses.accentColor
-          )}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          {isExpanded ? (
-            <>
-              <X size={16} />
-              Show Less
-            </>
-          ) : (
-            <>
-              <ChevronRight size={16} />
-              Show More
-            </>
-          )}
-        </motion.button>
       </div>
     </motion.div>
   );
