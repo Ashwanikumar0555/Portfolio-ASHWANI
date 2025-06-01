@@ -1,209 +1,3 @@
-
-
-// "use client"
-
-// import { useState, useEffect } from "react"
-// import { motion } from "framer-motion"
-// import { Github, ExternalLink, Heart, Coffee } from "lucide-react"
-// import * as Tabs from "@radix-ui/react-tabs"
-// import { cn } from "../utils/cn"
-// import { themeColors } from "../ui/color-selector"
-// import ProjectCard from "../components/project-card"
-// import coffee from "../assets/coffee.png"
-
-// export default function ProjectsSection({ themeColor = "blue" }) {
-//   const [favorites, setFavorites] = useState([])
-//   const [activeCategory, setActiveCategory] = useState("all")
-//   const [isLoading, setIsLoading] = useState(false)
-  
-//   // Load favorites from localStorage
-//   useEffect(() => {
-//     const savedFavorites = localStorage.getItem("projectFavorites")
-//     if (savedFavorites) {
-//       try {
-//         setFavorites(JSON.parse(savedFavorites))
-//       } catch (e) {
-//         console.error("Failed to parse favorites", e)
-//       }
-//     }
-//   }, [])
-  
-//   // Save favorites to localStorage
-//   useEffect(() => {
-//     localStorage.setItem("projectFavorites", JSON.stringify(favorites))
-//   }, [favorites])
-
-//   const categories = [
-//     { value: "all", label: "All Projects" },
-//     { value: "react", label: "React" }
-//   ]
-
-//   // Single coffee project
-//   const allProjects = [
-//     {
-//       id: "coffee-project",
-//       title: "Modern Coffee Shop",
-//       description: "An elegant and responsive coffee shop website featuring online ordering, a customer loyalty program, and a seamless user experience. Built with modern web technologies.",
-//       tags: ["React", "TailwindCSS", "Responsive Design"],
-//       category: "react",
-//       image: coffee,
-//       githubUrl: "https://github.com/Ashwanikumar0555/Coffee-",
-//       liveUrl: "https://coffee-ak.onrender.com/",
-//       features: [
-//         "Online ordering system",
-//         "Customer loyalty program",
-//         "Responsive design",
-//         "Modern UI/UX"
-//       ]
-//     }
-//   ]
-
-//   // Filter projects by category
-//   const filteredProjects = activeCategory === "all" 
-//     ? allProjects 
-//     : allProjects.filter(project => project.category === activeCategory)
-
-//   const toggleFavorite = (projectId) => {
-//     setFavorites(prev => 
-//       prev.includes(projectId)
-//         ? prev.filter(id => id !== projectId)
-//         : [...prev, projectId]
-//     )
-//   }
-
-//   // Simulate fetching projects based on category
-//   const fetchProjectsByCategory = (category) => {
-//     setIsLoading(true)
-//     setActiveCategory(category)
-    
-//     setTimeout(() => {
-//       setIsLoading(false)
-//     }, 400)
-//   }
-
-//   const colorGradient = themeColors[themeColor]?.primary || themeColors.blue.primary
-//   const buttonGradient = themeColors[themeColor]?.button || themeColors.blue.button
-//   const accentColor = themeColors[themeColor]?.accent || "text-blue-600 dark:text-blue-400"
-
-//   return (
-//     <section id="projects" className="py-20 bg-slate-50/50 dark:bg-slate-900/50">
-//       <div className="container mx-auto px-4 max-w-6xl">
-//         {/* Header section with coffee icon */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.5 }}
-//           viewport={{ once: true }}
-//           className="text-center mb-16"
-//         >
-//           <div className="flex items-center justify-center mb-4">
-//             <Coffee className={cn("h-10 w-10 mr-3", accentColor)} />
-//             <h2 className={cn(
-//               "text-4xl md:text-5xl font-bold bg-gradient-to-r text-transparent bg-clip-text inline-block",
-//               colorGradient
-//             )}>
-//               Featured Project
-//             </h2>
-//           </div>
-//           <div className={cn("h-1.5 w-24 bg-gradient-to-r mx-auto mb-8", colorGradient)} />
-//           <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-lg md:text-xl">
-//             Explore my coffee shop project - a showcase of modern web development with React and TailwindCSS.
-//           </p>
-//         </motion.div>
-
-//         {/* Project Display */}
-//         <div className="grid grid-cols-1 gap-8">
-//           {filteredProjects.map((project, index) => (
-//             <motion.div
-//               key={project.id}
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ delay: 0.2, duration: 0.5 }}
-//               viewport={{ once: true }}
-//               className="bg-white dark:bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden"
-//             >
-//               <div className="grid md:grid-cols-2 gap-6 p-6">
-//                 <div className="relative group">
-//                   <img 
-//                     src={project.image} 
-//                     alt={project.title}
-//                     className="w-full h-[300px] object-cover rounded-xl shadow-md transition-transform group-hover:scale-105"
-//                   />
-//                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-//                     <a
-//                       href={project.liveUrl}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className="p-3 bg-white rounded-full hover:bg-slate-100 transition-colors"
-//                     >
-//                       <ExternalLink className="h-6 w-6 text-slate-900" />
-//                     </a>
-//                     <a
-//                       href={project.githubUrl}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className="p-3 bg-white rounded-full hover:bg-slate-100 transition-colors"
-//                     >
-//                       <Github className="h-6 w-6 text-slate-900" />
-//                     </a>
-//                   </div>
-//                 </div>
-                
-//                 <div className="flex flex-col justify-between">
-//                   <div>
-//                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-//                       {project.title}
-//                     </h3>
-//                     <p className="text-slate-600 dark:text-slate-300 mb-6">
-//                       {project.description}
-//                     </p>
-//                     <div className="flex flex-wrap gap-2 mb-6">
-//                       {project.tags.map(tag => (
-//                         <span 
-//                           key={tag}
-//                           className={cn(
-//                             "px-3 py-1 rounded-full text-sm font-medium",
-//                             "bg-gradient-to-r text-white",
-//                             buttonGradient
-//                           )}
-//                         >
-//                           {tag}
-//                         </span>
-//                       ))}
-//                     </div>
-//                   </div>
-                  
-//                   <div className="flex gap-4">
-//                     <a
-//                       href={project.liveUrl}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className={cn(
-//                         "flex-1 text-center px-6 py-3 rounded-lg text-white font-medium",
-//                         "bg-gradient-to-r shadow-md hover:shadow-lg transition-all",
-//                         buttonGradient
-//                       )}
-//                     >
-//                       Live Demo
-//                     </a>
-//                     <a
-//                       href={project.githubUrl}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className="flex-1 text-center px-6 py-3 rounded-lg font-medium border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
-//                     >
-//                       View Code
-//                     </a>
-//                   </div>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
 "use client"
 
 import { useState, useEffect } from "react"
@@ -223,6 +17,22 @@ const mernapp = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main
 const foodeat = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Food%20Eat.png?raw=true"
 const reduxapi = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Redux-Api.png?raw=true"
 const bgchanger = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/BG-Changer.png?raw=true"
+const sdsteel = "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/SD%20Steel.png?raw=true"
+
+// 1. Add a tech icon mapping function
+const techIcons = {
+  React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  TailwindCSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+  MongoDB: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  Express: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  Node: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  Redux: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+  HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  CSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  Figma: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  // Add more as needed
+}
 
 export default function ProjectsSection({ themeColor = "blue" }) {
   const [favorites, setFavorites] = useState([])
@@ -230,6 +40,7 @@ export default function ProjectsSection({ themeColor = "blue" }) {
   const [isLoading, setIsLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [viewMode, setViewMode] = useState("grid")
+  const [modalProject, setModalProject] = useState(null)
   
   useEffect(() => {
     const savedFavorites = localStorage.getItem("projectFavorites")
@@ -266,11 +77,16 @@ export default function ProjectsSection({ themeColor = "blue" }) {
   ]
 
   const allProjects = [
+    
     {
       id: "portfolio",
       title: "Portfolio Website", 
       description: "My personal portfolio showcasing projects and skills.",
       tags: ["React", "TailwindCSS", "Portfolio"],
+      techStack: ["React", "TailwindCSS", "JavaScript"],
+      year: "2024",
+      role: "Full Stack Developer",
+      status: "Live",
       category: "react",
       image: portfolio,
       githubUrl: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI",
@@ -286,13 +102,44 @@ export default function ProjectsSection({ themeColor = "blue" }) {
       image: mernapp,
       githubUrl: "https://github.com/Ashwanikumar0555/luxora",
       liveUrl: "https://vocal-pithivier-6af21a.netlify.app/",
-      featured: true
+      featured: true,
+      features: [
+        "Modern business landing page",
+        "Product & service showcase",
+        "Contact form integration",
+        "Fully responsive design"
+      ]
+    },
+    {
+      id: "sd-steel",
+      title: "SD Steel",
+      description: "A modern, responsive website for SD Steel, featuring a sleek UI, product showcase, and contact integration. Built with React and TailwindCSS for a seamless user experience.",
+      tags: ["React", "TailwindCSS", "Frontend", "Business"],
+      techStack: ["React", "TailwindCSS", "JavaScript"],
+      year: "2024",
+      role: "Frontend Developer",
+      status: "Live",
+      category: "react",
+      image: sdsteel,
+      githubUrl: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/SD%20Steel.png?raw=true",
+      liveUrl: "https://lambent-toffee-26a719.netlify.app/",
+      featured: true,
+      features: [
+        "Modern business landing page",
+        "Product & service showcase",
+        "Contact form integration",
+        "Fully responsive design"
+      ]
     },
     {
       id: "coffee-project",
       title: "Modern Coffee Shop",
       description: "An elegant and responsive coffee shop website featuring online ordering, a customer loyalty program, and a seamless user experience.",
       tags: ["React", "TailwindCSS", "Responsive"],
+      techStack: ["React", "TailwindCSS", "JavaScript"],
+      year: "2023",
+      role: "Frontend Developer",
+      status: "Live",
       category: "react", 
       image: coffee,
       githubUrl: "https://github.com/Ashwanikumar0555/Coffee-",
@@ -617,6 +464,11 @@ export default function ProjectsSection({ themeColor = "blue" }) {
                             <Heart className="h-4 w-4 fill-red-500 text-red-500" />
                           </div>
                         )}
+                        {project.id === "sd-steel" && (
+                          <div className="absolute top-2 left-2 px-2 py-1 bg-gradient-to-r from-blue-600 to-blue-400 text-xs font-bold text-white rounded shadow-lg animate-pulse">
+                            New • React Frontend
+                          </div>
+                        )}
                       </div>
                       <div className="p-4">
                         <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
@@ -635,6 +487,24 @@ export default function ProjectsSection({ themeColor = "blue" }) {
                             </span>
                           ))}
                         </div>
+                        {project.id === "sd-steel" && project.features && (
+                          <ul className="mb-2 ml-2 list-disc text-xs text-blue-700 dark:text-blue-300">
+                            {project.features.map((f, i) => (
+                              <li key={i}>{f}</li>
+                            ))}
+                          </ul>
+                        )}
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">{project.year}</span>
+                          <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">{project.status}</span>
+                          <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">{project.role}</span>
+                        </div>
+                        <div className="flex gap-1 mb-2">
+                          {project.techStack && project.techStack.map(tech => (
+                            <img key={tech} src={techIcons[tech]} alt={tech} title={tech} className="h-5 w-5" />
+                          ))}
+                        </div>
+                        <button onClick={() => setModalProject(project)} className="mt-2 px-3 py-1.5 rounded bg-blue-100 text-blue-700 text-xs font-semibold hover:bg-blue-200 transition">Details</button>
                       </div>
                     </>
                   ) : (
@@ -685,6 +555,13 @@ export default function ProjectsSection({ themeColor = "blue" }) {
                               </span>
                             ))}
                           </div>
+                          {project.id === "sd-steel" && project.features && (
+                            <ul className="mb-2 ml-2 list-disc text-xs text-blue-700 dark:text-blue-300">
+                              {project.features.map((f, i) => (
+                                <li key={i}>{f}</li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                         <div className="flex gap-3">
                           <a
@@ -710,6 +587,11 @@ export default function ProjectsSection({ themeColor = "blue" }) {
                             Code
                           </a>
                         </div>
+                        {project.id === "sd-steel" && (
+                          <div className="absolute top-2 left-2 px-2 py-1 bg-gradient-to-r from-blue-600 to-blue-400 text-xs font-bold text-white rounded shadow-lg animate-pulse">
+                            New • React Frontend
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -719,6 +601,44 @@ export default function ProjectsSection({ themeColor = "blue" }) {
           </AnimatePresence>
         )}
       </div>
+
+      {/* Project Details Modal */}
+      {modalProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl max-w-lg w-full p-6 relative animate-fadeIn">
+            <button onClick={() => setModalProject(null)} className="absolute top-3 right-3 text-slate-400 hover:text-red-500 text-xl">&times;</button>
+            <img src={modalProject.image} alt={modalProject.title} className="rounded-lg w-full h-48 object-cover mb-4" />
+            <h2 className="text-2xl font-bold mb-2">{modalProject.title}</h2>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {modalProject.tags.map(tag => (
+                <span key={tag} className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">{tag}</span>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">{modalProject.year}</span>
+              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">{modalProject.status}</span>
+              <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">{modalProject.role}</span>
+            </div>
+            <p className="mb-3 text-slate-700 dark:text-slate-300 text-sm">{modalProject.description}</p>
+            {modalProject.features && (
+              <ul className="mb-3 ml-4 list-disc text-xs text-blue-700 dark:text-blue-300">
+                {modalProject.features.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            )}
+            <div className="flex gap-2 mb-3">
+              {modalProject.techStack && modalProject.techStack.map(tech => (
+                <img key={tech} src={techIcons[tech]} alt={tech} title={tech} className="h-6 w-6" />
+              ))}
+            </div>
+            <div className="flex gap-3">
+              <a href={modalProject.liveUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">Live Demo</a>
+              <a href={modalProject.githubUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition">Code</a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
