@@ -186,60 +186,21 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                 </div>
 
                 <button
-                  onClick={openInNewTab}
-                  className={cn(
-                    "flex items-center px-4 py-2 rounded-lg transition-all text-sm font-medium",
-                    "bg-white dark:bg-slate-700 border hover:bg-slate-50 dark:hover:bg-slate-600",
-                    themeColors[themeColor].accent
-                  )}
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Full Screen
-                </button>
-
-                {/* <button
-                  onClick={shareCertificate}
-                  className={cn(
-                    "flex items-center px-4 py-2 rounded-lg transition-all text-sm font-medium",
-                    "bg-white dark:bg-slate-700 border hover:bg-slate-50 dark:hover:bg-slate-600",
-                    themeColors[themeColor].accent
-                  )}
-                >
-                  {isCopied ? (
-                    <>
-                      <Check className="w-4 h-4 mr-2" />
-                      Link Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Share2 className="w-4 h-4 mr-2" />
-                      Share Certificate
-                    </>
-                  )}
-                </button> */}
-
-                {/* <button
                   onClick={downloadCertificate}
                   disabled={isDownloading}
                   className={cn(
-                    "flex items-center px-4 py-2 rounded-lg text-white transition-all text-sm font-medium",
-                    themeColors[themeColor].bg,
-                    themeColors[themeColor].hoverDarker,
-                    isDownloading ? "opacity-80 cursor-wait" : "hover:shadow-lg"
+                    "flex items-center px-4 py-2 rounded-lg transition-all text-sm font-medium",
+                    "bg-white dark:bg-slate-700 border hover:bg-slate-50 dark:hover:bg-slate-600",
+                    themeColors[themeColor].accent
                   )}
                 >
                   {isDownloading ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                       Processing...
-                    </>
-                  ) : downloadSuccess ? (
-                    <>
-                      <Check className="w-4 h-4 mr-2" />
-                      Downloaded!
                     </>
                   ) : (
                     <>
@@ -247,7 +208,19 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                       Download PDF
                     </>
                   )}
-                </button> */}
+                </button>
+
+                <button
+                  onClick={shareCertificate}
+                  className={cn(
+                    "flex items-center px-4 py-2 rounded-lg transition-all text-sm font-medium",
+                    "bg-white dark:bg-slate-700 border hover:bg-slate-50 dark:hover:bg-slate-600",
+                    themeColors[themeColor].accent
+                  )}
+                >
+                  <Share2 className="w-4 h-4 mr-2" />
+                  {isCopied ? 'Copied!' : 'Share'}
+                </button>
               </div>
             </div>
           </motion.div>
@@ -263,6 +236,14 @@ export default function CertificationsSection({ themeColor = "blue" }) {
 
   const certifications = [
     {
+      id: "CERT-AZURE2024",
+      title: "Microsoft Azure Fundamentals",
+      issuer: "Microsoft",
+      date: "2024",
+      description: "Comprehensive understanding of cloud concepts, Azure services, security, privacy, compliance, and pricing.",
+      image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Azure%20Certification.png?raw=true"
+    },
+    {
       id: "CERT-FS2023",
       title: "Full Stack Development",
       issuer: "Udemy",
@@ -277,7 +258,7 @@ export default function CertificationsSection({ themeColor = "blue" }) {
       date: "2023",
       description: "Advanced JavaScript concepts including ES6+, asynchronous programming, and modern frameworks.",
       image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/JavaScript%20Certificate.png?raw=true"
-    },
+    }
   ];
 
   const filteredCertifications = certifications.filter(cert =>
@@ -433,11 +414,11 @@ export default function CertificationsSection({ themeColor = "blue" }) {
               themeColors[themeColor].primary
             )}
           >
-            Certifications & Achievements
+            Professional Certifications
           </h2>
           <div className={cn("h-1 w-24 bg-gradient-to-r mx-auto mb-8 rounded-full", themeColors[themeColor].primary)}></div>
           <p className="text-slate-700 dark:text-slate-300 max-w-3xl mx-auto text-lg">
-            A collection of professional certifications showcasing expertise in modern web development technologies and best practices.
+            A showcase of my professional certifications and achievements in cloud computing, web development, and software engineering.
           </p>
           <div className="mt-8 max-w-md mx-auto">
             <input
@@ -467,16 +448,16 @@ export default function CertificationsSection({ themeColor = "blue" }) {
                 <img 
                   src={cert.image} 
                   alt={cert.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-105" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-80"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-xl font-semibold text-white">{cert.title}</h3>
-                  <div className="flex items-center mt-3 gap-2">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-xl font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">{cert.title}</h3>
+                  <div className="flex items-center mt-3 gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Award className={cn("w-5 h-5 text-white", themeColors[themeColor].text)} />
                     <span className="text-white text-sm font-medium">{cert.issuer} • {cert.date}</span>
                   </div>
-                  <span className="inline-flex items-center mt-2 px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center mt-2 px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Check className="w-4 h-4 mr-1" /> Verified
                   </span>
                 </div>
