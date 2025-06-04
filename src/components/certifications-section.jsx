@@ -185,7 +185,7 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                   </button>
                 </div>
 
-                <button
+                {/* <button
                   onClick={downloadCertificate}
                   disabled={isDownloading}
                   className={cn(
@@ -208,7 +208,7 @@ const CertificateModal = ({ certificate, isOpen, onClose, themeColor }) => {
                       Download PDF
                     </>
                   )}
-                </button>
+                </button> */}
 
                 <button
                   onClick={shareCertificate}
@@ -477,7 +477,7 @@ export default function CertificationsSection({ themeColor = "blue" }) {
                     <ExternalLink className="w-4 h-4 mr-2" />
                     View Certificate
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => downloadCertificateDirectly(cert)}
                     className={cn(
                       "flex-1 flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all",
@@ -488,7 +488,7 @@ export default function CertificationsSection({ themeColor = "blue" }) {
                   >
                     <Download className="w-4 h-4 mr-2" />
                     Download
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </motion.div>
