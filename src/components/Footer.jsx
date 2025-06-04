@@ -198,9 +198,10 @@ export default function Footer({ themeColor = "blue" }) {
       tags: ["React.js", "Tailwind"]
     },
     {
-      name: "Redux-API",
-      description: "State management library",
-      tags: ["Redux"]
+      name: "SD Steel",
+      description: "Responsive frontend website for SD Steel built with React.js to showcase Sariya products.",
+      tags: ["React.js", "Responsive", "Steel", "Frontend"]
+
     }
   ]
 
