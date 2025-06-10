@@ -236,27 +236,35 @@ export default function CertificationsSection({ themeColor = "blue" }) {
 
   const certifications = [
     {
-      id: "CERT-AZURE2024",
-      title: "Microsoft Azure Fundamentals",
-      issuer: "Microsoft",
-      date: "2024",
-      description: "Comprehensive understanding of cloud concepts, Azure services, security, privacy, compliance, and pricing.",
+      id: "8410860",
+      title: "Azure Fundamentals",
+      issuer: "Simplilearn SkillUp",
+      date: "31 May, 2025",
+      description: "Successfully completed the online course 'Azure Fundamentals' from Simplilearn SkillUp. Demonstrated initiative and commitment to deepening skills and advancing career.",
       image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Azure%20Certification.png?raw=true"
     },
     {
-      id: "CERT-FS2023",
-      title: "Full Stack Development",
-      issuer: "Udemy",
-      date: "2023",
-      description: "Comprehensive course covering full-stack development with HTML, CSS, JavaScript, Node.js, and MongoDB.",
+      id: "D8CC3A740276",
+      title: "SQL (Intermediate)",
+      issuer: "HackerRank",
+      date: "10 Jun, 2025",
+      description: "Passed the HackerRank SQL (Intermediate) skill certification test. Demonstrates proficiency in SQL querying, joins, aggregations, and data analysis.",
+      image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/SQL%20Certificate.png?raw=true"
+    },
+    {
+      id: "Springboard-2025",
+      title: "Learning Full Stack Development",
+      issuer: "Infosys Springboard",
+      date: "22 May, 2025",
+      description: "Successfully completed the 'Learning Full Stack Development' course from Infosys Springboard. Recognized for outstanding achievement and commitment to professional growth.",
       image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/Full%20Stack%20Certificate.png?raw=true"
     },
     {
-      id: "CERT-JS2023",
-      title: "JavaScript Mastery",
-      issuer: "Coursera",
-      date: "2023",
-      description: "Advanced JavaScript concepts including ES6+, asynchronous programming, and modern frameworks.",
+      id: "5754A85D71BD",
+      title: "JavaScript (Basic)",
+      issuer: "HackerRank",
+      date: "21 May, 2025",
+      description: "Passed the HackerRank JavaScript (Basic) skill certification test. Demonstrates understanding of JavaScript fundamentals.",
       image: "https://github.com/Ashwanikumar0555/Portfolio-ASHWANI/blob/main/src/assets/JavaScript%20Certificate.png?raw=true"
     }
   ];
